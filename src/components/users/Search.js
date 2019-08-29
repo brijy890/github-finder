@@ -17,28 +17,31 @@ class Search extends Component {
     this.props.searchUsers(this.state.text);
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    this.props.searchUsers(this.state.text);
+  };
 
   render() {
     const { showClear, clearUsers } = this.props;
     return (
       <div>
-        <form onSubmit={this.onSubmit} className='form'>
+        <form onSubmit={this.onSubmit} className="form">
           <input
-            type='text'
-            name='text'
-            placeholder='Search User..'
+            type="text"
+            name="text"
+            placeholder="Search User.."
             value={this.state.text}
             onChange={this.onChange}
           />
           <input
-            type='submit'
-            value='Search'
-            className='btn btn-dark btn-block'
+            type="submit"
+            value="Search"
+            className="btn btn-dark btn-block"
           />
         </form>
         {showClear && (
-          <button className='btn btn-light btn-block' onClick={clearUsers}>
+          <button className="btn btn-light btn-block" onClick={clearUsers}>
             Clear
           </button>
         )}
